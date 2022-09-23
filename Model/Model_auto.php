@@ -7,7 +7,7 @@ class Model_auto
     private $patente;
     private $marca;
     private $modelo;
-    private $dniDuenio; // Referencia al Obj Persona
+    private $objDuenio; // Referencia al Obj Persona
     private $mensajeOperacion;
 
     public function __construct()
@@ -15,17 +15,14 @@ class Model_auto
         $this->patente = "";
         $this->marca = "";
         $this->modelo = "";
-        $this->dniDuenio = "";
         $this->mensajeOperacion = "";
     }
 
-    public function setearValores($patente = '', $marca = '', $modelo = '', $dniDuenio = '', $nombre = '', $apellido = '') {
+    public function setearValores($patente, $marca, $modelo, $objDuenio) {
         $this->setPatente($patente);
         $this->setMarca($marca);
         $this->setModelo($modelo);
-        $this->setDniDuenio($dniDuenio);
-        $this->setDniDuenio($dniDuenio);
-        $this->setDniDuenio($dniDuenio);
+        $this->setObjDuenio($objDuenio);
     }
 
     public function getPatente()
@@ -55,13 +52,13 @@ class Model_auto
         $this->modelo = $modelo;
     }
 
-    public function getDniDuenio()
+    public function getObjDuenio()
     {
-        return $this->dniDuenio;
+        return $this->objDuenio;
     }
-    public function setDniDuenio($dniDuenio)
+    public function setObjDuenio($objDuenio)
     {
-        $this->dniDuenio = $dniDuenio;
+        $this->objDuenio = $objDuenio;
     }
 
     public function getmensajeoperacion(){
@@ -74,7 +71,7 @@ class Model_auto
     }
 
     /**
-     * Inserta una empresa a la BD
+     * Inserta un auto a la BD
      */
 
     public function Insertar()
@@ -82,8 +79,8 @@ class Model_auto
         $bd = new BaseDatos();
         $rta = false;
 
-        $query = "INSERT INTO auto(Marca, Modelo, DniDuenio)
-                  VALUES ('" . $this->getMarca() . "','" . $this->getModelo() . "','" . $this->getDniDuenio() . "')";
+        $query = "INSERT INTO auto(Patente, Marca, Modelo, DniDuenio)
+                  VALUES ('" . $this->getPatente() . "','" . $this->getMarca() . "','" . $this->getModelo() . "','" . $this->getObjDuenio()->getNroDni() . "')";
 
         if ($bd->Iniciar()) {
             if ($bd->Ejecutar($query)) {
@@ -106,8 +103,8 @@ class Model_auto
     {
         $bd = new BaseDatos();
         $rta = false;
-        $query = "UPDATE auto SET Patente='" . $this->getPatente() . "',Marca='" . $this->getMarca() . "',Modelo='" . $this->getModelo() . "','" . $this->getDniDuenio() . "'
-                 WHERE Patente=" . $this->getPatente();
+        $query = "UPDATE auto SET Patente='" . $this->getPatente() . "',Marca='" . $this->getMarca() . "',Modelo='" . $this->getModelo() . "','" . $this->getObjDuenio()->getNroDni() . "'
+                 WHERE Patente =" . $this->getPatente();
 
         if ($bd->Iniciar()) {
             if ($bd->Ejecutar($query)) {
@@ -143,6 +140,33 @@ class Model_auto
             $bd->getError();
         }
 
+        return $rta;
+    }
+
+    /**
+     * Recupera los datos de un auto a través de su patente
+     * @param patente string
+     */
+    public function Buscar($patente)
+    {
+        $bd = new BaseDatos();
+
+        $query = "SELECT * FROM auto WHERE Patente ='" . $patente . "'";
+
+        $rta = false;
+
+        if ($bd->Iniciar()) {
+            if ($bd->Ejecutar($query)) {
+                if ($row = $bd->Registro()) {
+                    $this->setearValores($row['Patente'], $row['Marca'], $row['Modelo'], $row['DniDuenio']);
+                    $rta = true;
+                }
+            } else {
+                $this->setmensajeoperacion($bd->getError());
+            }
+        } else {
+            $this->setmensajeoperacion($bd->getError());
+        }
         return $rta;
     }
 

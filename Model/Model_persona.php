@@ -106,6 +106,31 @@ class Model_persona
     }
 
     /**
+     * Inserta una persona a la BD
+     */
+
+    public function Insertar()
+    {
+        $bd = new BaseDatos();
+        $rta = false;
+
+        $query = "INSERT INTO persona(NroDni, Apellido, Nombre, fechaNac, Telefono, Domicilio)
+                  VALUES ('" . $this->getNroDni() . "','" . $this->getApellido() . "','" . $this->getNombre() . "','" . $this->getFechaNac() . "','" . $this->getTelefono() . "','" . $this->getDomicilio() . "')";
+
+        if ($bd->Iniciar()) {
+            if ($bd->Ejecutar($query)) {
+                $rta = true;
+            } else {
+                $this->setMsjOperacion($bd->getError());
+            }
+        } else {
+            $this->setMsjOperacion($bd->getError());
+        }
+
+        return $rta;
+    }
+
+    /**
      * Recupera los datos de una persona a través de su DNI
      * @param nroDni int
      */
@@ -146,7 +171,7 @@ class Model_persona
         $query = "SELECT * FROM persona ";
 
         if ($parametro != '') {
-            $query =  $query . 'WHERE ' . $parametro;
+            $query.= 'WHERE ' . $parametro;
         }
 
         $rta = $bd->Ejecutar($query);

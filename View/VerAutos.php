@@ -4,7 +4,7 @@ include_once('../configuracion.php');
 
 $objAuto = new Auto();
 $objPersona = new Persona();
-$listaAutos = $objAuto->getAutos();
+$listaAutos = $objAuto->buscar();
 
 ?>
 
@@ -27,7 +27,7 @@ $listaAutos = $objAuto->getAutos();
                 if (isset($listaAutos)) {
                     foreach ($listaAutos as $auto) :
                         $persona['NroDni'] = $auto->getDniDuenio();
-                        $listaPersona = $objPersona->getPersonasPorDni($persona);
+                        $listaPersona = $objPersona->buscar($persona);
                 ?>
                         <tr style="border-bottom:2px solid white;">
                             <th scope="row"><?= $auto->getPatente() ?></th>
