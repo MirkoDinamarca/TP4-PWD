@@ -1,6 +1,6 @@
 <?php
-include_once('../templates/header.php');
-include_once('../configuracion.php');
+// include_once('../templates/header.php');
+// include_once('../configuracion.php');
 ?>
 
 <div class="m-0 vh-100 row justify-content-center align-items-center">
@@ -37,5 +37,5 @@ include_once('../configuracion.php');
 </div>
 
 <?php
-include_once('../templates/footer.php');
+// include_once('../templates/footer.php');
 ?>

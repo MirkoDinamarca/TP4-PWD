@@ -12,6 +12,19 @@ $datoPersona = $objPersona->buscar($datos);
 $dniPersona['NroDni'] = $datoPersona[0]->getNroDni();
 $datoAutosPersona = $objAuto->buscar($dniPersona);
 
+// $personaCompleta = $objPersona->buscar($datos);
+// /* echo '<pre>';
+// var_dump(($personaCompleta));
+// echo '</pre>'; */
+// $objAuto = new Auto();
+// $objPersona = new Persona();
+// $datos = data_submitted();
+
+// $datoPersona = $objPersona->buscar($datos);
+// $dniPersona['DniDuenio'] = $datoPersona[0]->getNroDni();
+
+// $datoAutosPersona = $objAuto->buscar($dniPersona);
+
 ?>
 
 <div class="m-0 vh-100 row justify-content-center align-items-center">
@@ -38,7 +51,7 @@ $datoAutosPersona = $objAuto->buscar($dniPersona);
                         <td><?= $datoPersona[0]->getApellido() ?></td>
                         <td><?= $datoPersona[0]->getFechaNac() ?></td>
                         <td><?= $datoPersona[0]->getTelefono() ?></td>
-                        <td><?= $datoPersona[0]->getDomicilio()?></td>
+                        <td><?= $datoPersona[0]->getDomicilio() ?></td>
                     </tr>
                 <?php
                 } else { ?>
@@ -48,7 +61,6 @@ $datoAutosPersona = $objAuto->buscar($dniPersona);
                 <?php } ?>
             </tbody>
         </table>
-
         <h1>Los autos asociados a esa persona son:</h1>
 
         <table class="table table-dark">
@@ -77,9 +89,12 @@ $datoAutosPersona = $objAuto->buscar($dniPersona);
                 <?php } ?>
             </tbody>
         </table>
-    </div>
-</div>
 
-<?php
-include_once('../templates/footer.php');
-?>
+        <a href="../vistanueva/MyResume/index.php" class="btn btn-primary">Volver</a>
+
+    </div>
+
+    <?php
+    include_once('../templates/footer.php');
+    include_once('../configuracion.php');
+    ?>

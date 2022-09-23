@@ -1,3 +1,8 @@
+<?php
+include_once('../../configuracion.php');
+include_once('../../templates/header.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +70,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1>GRUPO 13</h1>
+      <h1 style="text-align: left;">GRUPO N°9</h1>
       <p><span class="typed" data-typed-items="Mirko Dinamarca, Agustina Kilapi, Agustina Rossi"></span></p>
 
     </div>
@@ -73,110 +78,67 @@
 
   <main id="main">
 
-    <!-- ======= About Section ======= -->
+    <!-- ======= Crear una nueva persona ======= -->
     <section id="about" class="about">
 
       <h1>EJERCICIO 3</h1><BR></BR>
       <H3>CREAR UNA NUEVA PERSONA</H3>
-
-      <div class="m-0 vh-100 row justify-content-center align-items-center">
-
-        <div class="col-xs-12 col-md-5" style="padding: 20px; border: 1px solid gray; border-radius: 10px;">
-          <form id="form" action="../../View/accionNuevaPersona.php" method="POST">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">N°DNI</label>
-              <input type="text" class="form-control" id="NroDni" name="NroDni" placeholder="Ingrese el N°DNI">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Ingrese el nombre">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Ingrese el apellido">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Fecha de Nacimiento</label>
-              <input type="date" class="form-control" id="fechaNac" name="fechaNac" placeholder="Ingrese la fecha de nacimiento">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Telefono</label>
-              <input type="number" class="form-control" id="Telefono" name="Telefono" placeholder="Ingrese el telefono">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Domicilio</label>
-              <input type="text" class="form-control" id="Domicilio" name="Domicilio" placeholder="Ingrese el domicilio">
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </form>
-        </div>
-      </div>
-
-
+      <?php include "../../View/NuevaPersona.php"; ?>;
 
     </section><!-- End About Section -->
 
-    <!-- ======= Facts Section ======= -->
+    <!-- ======= Ver Crear un nuevo auto ======= -->
     <section id="facts" class="facts">
       <h1>EJERCICIO 4</h1><BR></BR>
       <H3>CREAR UN NUEVO AUTO</H3>
-      <div class="m-0 vh-100 row justify-content-center align-items-center">
-
-        <div class="col-xs-12 col-md-5" style="padding: 20px; border: 1px solid gray; border-radius: 10px;">
-          <form id="form" action="accionNuevoAuto.php" method="POST">
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Patente</label>
-              <input type="text" class="form-control" id="Patente" name="Patente" placeholder="Ingrese el N° de patente">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Marca</label>
-              <input type="text" class="form-control" id="Marca" name="Marca" placeholder="Ingrese la marca">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Modelo</label>
-              <input type="number" class="form-control" id="Modelo" name="Modelo" placeholder="Ingrese el modelo">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">N°DNI Dueño</label>
-              <input type="number" class="form-control" id="DniDuenio" name="DniDuenio" placeholder="Ingrese el N°DNI del dueño">
-            </div>
-            <button type="submit" class="btn btn-primary">Registrar Auto</button>
-          </form>
-        </div>
-      </div>
-
+      <?php
+      include "../../View/NuevoAuto.php";
+      ?>
     </section><!-- End Facts Section -->
 
-    <!-- ======= Skills Section ======= -->
+    <!-- ======= Ver Lista de Autos ======= -->
     <section id="skills" class="skills section-bg">
-     
+      <h1>EJERCICIO 5</h1><BR></BR>
+      <H3>Ver lista de autos</H3>
+      <?php include "../../View/VerAutos.php"; ?>;
 
     </section><!-- End Skills Section -->
 
-    <!-- ======= Resume Section ======= -->
+    <!-- ======= Buscar Autos ======= -->
     <section id="resume" class="resume">
-      
+
+      <h1>EJERCICIO 6</h1><BR></BR>
+      <H3>Buscar Auto</H3>
+      <?php include "../../View/buscarAuto.php"; ?>
+      <?php include "../../View/autosPersona.php"; ?>
+
 
     </section><!-- End Resume Section -->
 
-    <!-- ======= Portfolio Section ======= -->
+    <!-- ======= Listar Personas ======= -->
     <section id="portfolio" class="portfolio section-bg">
-      
+      <h1>EJERCICIO 7</h1><BR></BR>
+      <H3>Listar Persona</H3>
+      <?php include "../../View/listaPersonas.php"; ?>
     </section><!-- End Portfolio Section -->
 
-    <!-- ======= Services Section ======= -->
+    <!-- ======= Cambiar Dueño ======= -->
     <section id="services" class="services">
-     
+      <h1>EJERCICIO 8</h1><BR></BR>
+      <H3>Cambiar Dueño</H3>
+      <?php include "../../View/CambioDuenio.php"; ?>
     </section><!-- End Services Section -->
 
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials section-bg">
-    
+      <h1>EJERCICIO 9</h1><BR></BR>
+      <H3>Actualizar datos persona</H3>
+      <?php include "../../View/BuscarPersona.php"; ?>
     </section><!-- End Testimonials Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-     
+
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
@@ -184,17 +146,9 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <h3>Brandon Johnson</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+      
       <div class="copyright">
-        &copy; Copyright <strong><span>MyResume</span></strong>. All Rights Reserved
+        Agustina Kilapi - Agustina Rossi - Mirko Dinamarca <br><strong><span>Grupo N°9</span></strong>
       </div>
 
     </div>

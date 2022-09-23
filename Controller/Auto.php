@@ -65,6 +65,7 @@ class Auto {
         $patente = $datos['Patente'];
 
         $objPersona->Buscar($dniPersona);
+
         $objAuto->Buscar($patente);
 
         if ($objPersona->getNroDni() != '') { // ¿Esto está bien? Preguntar en clase

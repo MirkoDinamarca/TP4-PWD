@@ -113,6 +113,30 @@ class Model_persona {
     }
 
     /**
+     * Método para modificar una empresa de la BD
+     */
+
+    public function Modificar()
+    {
+        $bd = new BaseDatos();
+        $rta = false;
+        $query = "UPDATE persona SET NroDni='" . $this->getNroDni() . "',Apellido='" . $this->getApellido() . "',Nombre='" . $this->getNombre() . "',fechaNac='" . $this->getFechaNac() . "',Telefono='" . $this->getTelefono() . "',Domicilio='" . $this->getDomicilio() . "'
+                 WHERE NroDni =" . $this->getNroDni();
+
+        if ($bd->Iniciar()) {
+            if ($bd->Ejecutar($query)) {
+                $rta = true;
+            } else {
+                $this->setMsjOperacion($bd->getError());
+            }
+        } else {
+            $this->setMsjOperacion($bd->getError());
+        }
+
+        return $rta;
+    }
+
+    /**
      * Recupera los datos de una persona a través de su DNI
      * @param nroDni int
      */
@@ -169,27 +193,5 @@ class Model_persona {
         }
 
         return $listaPersonas;
-    }
-    /**
-     * Método para modificar una empresa de la BD
-     */
-
-    public function Modificar() {
-        $bd = new BaseDatos();
-        $rta = false;
-        $query = "UPDATE persona SET NroDni='" . $this->getNroDni() . "',Apellido='" . $this->getApellido() . "',Nombre='" . $this->getNombre() . "',fechaNac='" . $this->getFechaNac() . "',Telefono='" . $this->getTelefono() . "',Domicilio='" . $this->getDomicilio() . "'
-                 WHERE NroDni =" . $this->getNroDni();
-
-        if ($bd->Iniciar()) {
-            if ($bd->Ejecutar($query)) {
-                $rta = true;
-            } else {
-                $this->setMsjOperacion($bd->getError());
-            }
-        } else {
-            $this->setMsjOperacion($bd->getError());
-        }
-
-        return $rta;
     }
 }

@@ -5,20 +5,15 @@ include_once('../configuracion.php');
 $objPersona = new Persona();
 $datos = data_submitted();
 $datoPersona = $objPersona->buscar($datos);
-echo "<pre>";
-var_dump($datoPersona);
-echo "</pre>";
 $dniPersona['NroDni'] = $datoPersona[0]->getNroDni();
 ?>
 
 <div class="m-0 vh-100 row justify-content-center align-items-center">
 
     <div class="col-xs-12 col-md-5" style="padding: 20px; border: 1px solid gray; border-radius: 10px;">
+        <h5>Actualizar datos persona</h5>    
         <form id="form" action="ActualizarDatosPersona.php" method="POST">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <input type="hidden" class="form-control" id="NroDni" name="NroDni" value="<?php echo $datoPersona[0]->getNroDni() ?>">
-            </div>
+            <input type="number" class="form-control" id="NroDni" name="NroDni" value="<?php echo $datoPersona[0]->getNroDni() ?>" hidden>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Ingrese el nombre" value="<?php echo $datoPersona[0]->getNombre() ?>">
@@ -40,6 +35,8 @@ $dniPersona['NroDni'] = $datoPersona[0]->getNroDni();
                 <input type="text" class="form-control" id="Domicilio" name="Domicilio" placeholder="Ingrese el domicilio" value="<?php echo $datoPersona[0]->getDomicilio() ?>">
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
+            <a href="../vistanueva/MyResume/index.php" class="btn btn-secondary">Volver</a>
         </form>
+        
     </div>
 </div>

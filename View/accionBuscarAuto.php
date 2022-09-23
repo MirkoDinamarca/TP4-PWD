@@ -13,7 +13,7 @@ $resultado = $objAuto->buscar($datos);
 
 <div class="m-0 vh-100 row justify-content-center align-items-center">
 
-    <div class="col-xs-12 col-md-8" style="padding: 20px; border: 1px solid gray; border-radius: 10px;">
+    <div class="col-xs-12 col-md-8" style="padding: 20px; border-radius: 10px;">
         <table class="table">
             <thead>
                 <tr>
@@ -32,6 +32,9 @@ $resultado = $objAuto->buscar($datos);
                 </tr>
             </tbody>
         </table>
+
+        <a href="../vistanueva/MyResume/index.php" class="btn btn-primary">Volver</a>
+
     </div>
 </div>
 
