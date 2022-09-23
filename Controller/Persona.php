@@ -39,7 +39,22 @@ class Persona {
         }
     }
 
+    public function actualizarPersona($datos) {
+        $objPersona = new Model_persona();
 
+        if (isset($datos)) {
+
+            $validacion = false;
+            $objPersona->setearValores($datos['NroDni'], $datos['Apellido'], $datos['Nombre'], $datos['fechaNac'], $datos['Telefono'], $datos['Domicilio']);
+            
+            if ($objPersona->Modificar()) {
+                $validacion = true;
+            }
+
+            // !Arreglar!
+            // Registra bien una nueva persona pero cuando la llave primaria está repetida
+            // muestra un error de sql que no se tiene que ver.
+            return $validacion;
+        }
+    }
 }
-
-?>

@@ -2,14 +2,13 @@
 include_once('../templates/header.php');
 include_once('../configuracion.php');
 
-$objAuto = new Auto();
 $objPersona = new Persona();
+
 $datos = data_submitted();
 
+$objPersona->actualizarPersona($datos);
 $datoPersona = $objPersona->buscar($datos);
-$dniPersona['DniDuenio'] = $datoPersona[0]->getNroDni();
 
-$datoAutosPersona = $objAuto->buscar($dniPersona);
 
 ?>
 
@@ -46,39 +45,3 @@ $datoAutosPersona = $objAuto->buscar($dniPersona);
                     </tr>
                 <?php } ?>
             </tbody>
-        </table>
-
-        <h1>Los autos asociados a esa persona son:</h1>
-
-        <table class="table table-dark">
-            <thead>
-                <tr style="border-bottom:2px solid white;">
-                    <th scope="col" style="border-radius: 5px 0 0 0; border-right: 2px solid white;">Patente</th>
-                    <th scope="col" style="border-right: 2px solid white;">Marca</th>
-                    <th scope="col" style="border-right: 2px solid white;">Modelo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if (isset($datoAutosPersona)) {
-                    foreach ($datoAutosPersona as $data) : ?>
-                        <tr style="border-bottom:2px solid white;">
-                            <th scope="row"><?= $data->getPatente() ?></th>
-                            <td><?= $data->getMarca() ?></td>
-                            <td><?= $data->getModelo() ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php
-                } else { ?>
-                    <tr>
-                        <td colspan="6" style="text-align: center;">No se encontraron autos registrados</td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<?php
-include_once('../templates/footer.php');
-?>

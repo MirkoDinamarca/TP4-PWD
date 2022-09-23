@@ -15,8 +15,8 @@ class Auto {
                 $where.= " AND Patente ='" . $param['Patente']. "'";
             }
 
-            if (isset($param['DniDuenio'])) {
-                $where.= " AND DniDuenio ='" . $param['DniDuenio']. "'";
+            if (isset($param['NroDni'])) {
+                $where.= " AND DniDuenio ='" . $param['NroDni']. "'";
             }
         }
 
@@ -30,7 +30,7 @@ class Auto {
 
         $validacion = [];
 
-        $dniPersona = $datos['DniDuenio'];
+        $dniPersona = $datos['NroDni'];
 
         $objPersona->Buscar($dniPersona);
 

@@ -2,8 +2,7 @@
 
 include_once "BaseDatos.php";
 
-class Model_persona
-{
+class Model_persona {
     private $nroDni;
     private $apellido;
     private $nombre;
@@ -12,8 +11,7 @@ class Model_persona
     private $domicilio;
     private $mensajeOperacion;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->nroDni = "";
         $this->apellido = "";
         $this->nombre = "";
@@ -32,8 +30,7 @@ class Model_persona
      * @param telefono int(11)
      * @param domicilio address
      */
-    public function setearValores($nroDni = '', $apellido = '', $nombre = '', $fechaNac = '', $telefono = '', $domicilio = '')
-    {
+    public function setearValores($nroDni = '', $apellido = '', $nombre = '', $fechaNac = '', $telefono = '', $domicilio = '') {
         $this->setNroDni($nroDni);
         $this->setApellido($apellido);
         $this->setNombre($nombre);
@@ -42,66 +39,52 @@ class Model_persona
         $this->setDomicilio($domicilio);
     }
 
-    public function getNroDni()
-    {
+    public function getNroDni() {
         return $this->nroDni;
     }
-    public function setNroDni($nroDni)
-    {
+    public function setNroDni($nroDni) {
         $this->nroDni = $nroDni;
     }
 
-    public function getApellido()
-    {
+    public function getApellido() {
         return $this->apellido;
     }
-    public function setApellido($apellido)
-    {
+    public function setApellido($apellido) {
         $this->apellido = $apellido;
     }
 
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
     }
 
-    public function getFechaNac()
-    {
+    public function getFechaNac() {
         return $this->fechaNac;
     }
-    public function setFechaNac($fechaNac)
-    {
+    public function setFechaNac($fechaNac) {
         $this->fechaNac = $fechaNac;
     }
 
-    public function getTelefono()
-    {
+    public function getTelefono() {
         return $this->telefono;
     }
-    public function setTelefono($telefono)
-    {
+    public function setTelefono($telefono) {
         $this->telefono = $telefono;
     }
 
-    public function getDomicilio()
-    {
+    public function getDomicilio() {
         return $this->domicilio;
     }
-    public function setDomicilio($domicilio)
-    {
+    public function setDomicilio($domicilio) {
         $this->domicilio = $domicilio;
     }
 
-    public function getmensajeoperacion()
-    {
+    public function getmensajeoperacion() {
         return $this->mensajeOperacion;
     }
-    public function setMsjOperacion($valor)
-    {
+    public function setMsjOperacion($valor) {
         $this->mensajeOperacion = $valor;
     }
 
@@ -109,8 +92,7 @@ class Model_persona
      * Inserta una persona a la BD
      */
 
-    public function Insertar()
-    {
+    public function Insertar() {
         $bd = new BaseDatos();
         $rta = false;
 
@@ -134,8 +116,7 @@ class Model_persona
      * Recupera los datos de una persona a través de su DNI
      * @param nroDni int
      */
-    public function Buscar($nroDni)
-    {
+    public function Buscar($nroDni) {
         $bd = new BaseDatos();
 
         $query = "SELECT * FROM persona WHERE NroDni =" . $nroDni;
@@ -162,8 +143,7 @@ class Model_persona
      * @param parametro Es el parámetro que se pasa al método, que es la condición de la consulta.
      * @return An array de objetos.
      */
-    public function listar($parametro = '')
-    {
+    public function listar($parametro = '') {
         $bd = new BaseDatos();
         $rta = false;
         $listaPersonas = [];
@@ -171,7 +151,7 @@ class Model_persona
         $query = "SELECT * FROM persona ";
 
         if ($parametro != '') {
-            $query.= 'WHERE ' . $parametro;
+            $query .= 'WHERE ' . $parametro;
         }
 
         $rta = $bd->Ejecutar($query);
@@ -189,5 +169,27 @@ class Model_persona
         }
 
         return $listaPersonas;
+    }
+    /**
+     * Método para modificar una empresa de la BD
+     */
+
+    public function Modificar() {
+        $bd = new BaseDatos();
+        $rta = false;
+        $query = "UPDATE persona SET NroDni='" . $this->getNroDni() . "',Apellido='" . $this->getApellido() . "',Nombre='" . $this->getNombre() . "',fechaNac='" . $this->getFechaNac() . "',Telefono='" . $this->getTelefono() . "',Domicilio='" . $this->getDomicilio() . "'
+                 WHERE NroDni =" . $this->getNroDni();
+
+        if ($bd->Iniciar()) {
+            if ($bd->Ejecutar($query)) {
+                $rta = true;
+            } else {
+                $this->setMsjOperacion($bd->getError());
+            }
+        } else {
+            $this->setMsjOperacion($bd->getError());
+        }
+
+        return $rta;
     }
 }

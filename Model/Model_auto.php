@@ -2,16 +2,14 @@
 
 include_once "BaseDatos.php";
 
-class Model_auto
-{
+class Model_auto {
     private $patente;
     private $marca;
     private $modelo;
     private $objDuenio; // Referencia al Obj Persona
     private $mensajeOperacion;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->patente = "";
         $this->marca = "";
         $this->modelo = "";
@@ -25,57 +23,46 @@ class Model_auto
         $this->setObjDuenio($objDuenio);
     }
 
-    public function getPatente()
-    {
+    public function getPatente() {
         return $this->patente;
     }
-    public function setPatente($patente)
-    {
+    public function setPatente($patente) {
         $this->patente = $patente;
     }
 
-    public function getMarca()
-    {
+    public function getMarca() {
         return $this->marca;
     }
-    public function setMarca($marca)
-    {
+    public function setMarca($marca) {
         $this->marca = $marca;
     }
 
-    public function getModelo()
-    {
+    public function getModelo() {
         return $this->modelo;
     }
-    public function setModelo($modelo)
-    {
+    public function setModelo($modelo) {
         $this->modelo = $modelo;
     }
 
-    public function getObjDuenio()
-    {
+    public function getObjDuenio() {
         return $this->objDuenio;
     }
-    public function setObjDuenio($objDuenio)
-    {
+    public function setObjDuenio($objDuenio) {
         $this->objDuenio = $objDuenio;
     }
 
-    public function getmensajeoperacion(){
+    public function getmensajeoperacion() {
         return $this->mensajeOperacion;
-        
     }
-    public function setmensajeoperacion($valor){
+    public function setmensajeoperacion($valor) {
         $this->mensajeOperacion = $valor;
-        
     }
 
     /**
      * Inserta un auto a la BD
      */
 
-    public function Insertar()
-    {
+    public function Insertar() {
         $bd = new BaseDatos();
         $rta = false;
 
@@ -99,12 +86,11 @@ class Model_auto
      * Método para modificar una empresa de la BD
      */
 
-    public function Modificar()
-    {
+    public function Modificar() {
         $bd = new BaseDatos();
         $rta = false;
-        $query = "UPDATE auto SET Patente='" . $this->getPatente() . "',Marca='" . $this->getMarca() . "',Modelo='" . $this->getModelo() . "','" . $this->getObjDuenio()->getNroDni() . "'
-                 WHERE Patente =" . $this->getPatente();
+        $query = "UPDATE auto SET Patente='" . $this->getPatente() . "',Marca='" . $this->getMarca() . "',Modelo='" . $this->getModelo() . "',DniDuenio='" . $this->getObjDuenio()->getNroDni() . "'
+                 WHERE Patente ='" . $this->getPatente() . "'";
 
         if ($bd->Iniciar()) {
             if ($bd->Ejecutar($query)) {
@@ -123,8 +109,7 @@ class Model_auto
      * Método para eliminar la empresa de la BD
      */
 
-    public function Eliminar()
-    {
+    public function Eliminar() {
         $bd = new BaseDatos();
         $rta = false;
 
@@ -147,8 +132,7 @@ class Model_auto
      * Recupera los datos de un auto a través de su patente
      * @param patente string
      */
-    public function Buscar($patente)
-    {
+    public function Buscar($patente) {
         $bd = new BaseDatos();
 
         $query = "SELECT * FROM auto WHERE Patente ='" . $patente . "'";
@@ -171,8 +155,7 @@ class Model_auto
     }
 
 
-    public function listar($parametro = '')
-    {
+    public function listar($parametro = '') {
         $bd = new BaseDatos();
         $rta = false;
         $listaAutos = [];
@@ -180,7 +163,7 @@ class Model_auto
         $query = "SELECT * FROM auto ";
 
         if ($parametro != '') {
-            $query.= 'WHERE ' . $parametro;
+            $query .= 'WHERE ' . $parametro;
         }
 
         $rta = $bd->Ejecutar($query);
@@ -194,7 +177,7 @@ class Model_auto
                 }
             }
         } else {
-            Model_auto::setmensajeoperacion("Auto->listar: ".$bd->getError());
+            Model_auto::setmensajeoperacion("Auto->listar: " . $bd->getError());
         }
 
         return $listaAutos;

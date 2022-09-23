@@ -6,11 +6,8 @@ include_once('../configuracion.php');
 $objAuto = new Auto();
 $datos = data_submitted();
 
-$resultado = $objAuto->cambiarDuenio($datos);
 
-echo '<pre>';
-var_dump($datos);
-echo '</pre>';
+$resultado = $objAuto->cambiarDuenio($datos);
 
 ?>
 
@@ -26,7 +23,7 @@ echo '</pre>';
             <h1>La patente no se encuentra registrada</h1>
         <?php } else { ?>
 
-            <?php if ($resultado['insercion']) { ?>
+            <?php if ($resultado['modificacion']) { ?>
                 <h1>¡El auto se registró con éxito!</h1>
             <?php } else { ?>
                 <h1>Hubo un error al intentar registrar el auto!</h1>

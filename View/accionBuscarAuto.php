@@ -5,9 +5,9 @@ include_once('../configuracion.php');
 $objAuto = new Auto();
 $datos = data_submitted();
 $resultado = $objAuto->buscar($datos);
-/* echo '<pre>';
-var_dump($resultado);
-echo '</pre>'; */
+// echo '<pre>';
+// var_dump($resultado);
+// echo '</pre>';
 
 ?>
 
@@ -28,7 +28,7 @@ echo '</pre>'; */
                     <th scope="row"><?= $resultado[0]->getPatente() ?></th>
                     <td><?= $resultado[0]->getMarca() ?></td>
                     <td><?= $resultado[0]->getModelo() ?></td>
-                    <td><?= $resultado[0]->getDniDuenio() ?></td>
+                    <td><?= $resultado[0]->getObjDuenio() ?></td>
                 </tr>
             </tbody>
         </table>
