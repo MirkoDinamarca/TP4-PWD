@@ -5,7 +5,7 @@ include_once('../configuracion.php');
 $objAuto = new Auto();
 $datos = data_submitted();
 
-if ($datos['Patente'] != 'null') {
+if (!empty($datos['Patente'])) {
     $resultado = $objAuto->buscar($datos);
 }
 
@@ -24,12 +24,18 @@ if ($datos['Patente'] != 'null') {
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <?php if ($resultado) {?>
+                    <tr>
                     <th scope="row"><?= $resultado[0]->getPatente() ?></th>
                     <td><?= $resultado[0]->getMarca() ?></td>
                     <td><?= $resultado[0]->getModelo() ?></td>
                     <td><?= $resultado[0]->getObjDuenio() ?></td>
                 </tr>
+                <?php } else {?>
+                    <tr style="text-align: center;">
+                        <td colspan="4">No se encontró el auto</td>
+                    </tr>
+                    <?php } ?>
             </tbody>
         </table>
 
