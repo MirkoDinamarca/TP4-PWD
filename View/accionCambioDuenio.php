@@ -16,8 +16,6 @@ $resultado = $objAuto->cambiarDuenio($datos);
     <div class="col-xs-12 col-md-8" style="padding: 20px; border-radius: 10px;">
         <?php if (!$resultado['persona']) { ?>
             <h1>La persona no se encuentra registrada</h1>
-            <h2>¿Desea registrar una persona?</h2>
-            <a class="btn btn-primary" href="NuevaPersona.php">Registrar Nueva Persona</a>
 
         <?php } else if (!$resultado['patente']) { ?>
             <h1>La patente no se encuentra registrada</h1>
@@ -30,7 +28,7 @@ $resultado = $objAuto->cambiarDuenio($datos);
             <?php } ?>
 
         <?php } ?>
-        <a href="../vistanueva/MyResume/index.php" class="btn btn-primary">Volver</a>
+        <a href="../index.php" class="btn ">Volver al Inicio</a>
 
     </div>
 </div>

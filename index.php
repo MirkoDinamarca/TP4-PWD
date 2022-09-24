@@ -1,6 +1,6 @@
 <?php
-include_once('../../configuracion.php');
-include_once('../../templates/header.php');
+include_once('configuracion.php');
+include_once('templates/header.php');
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +61,7 @@ include_once('../../templates/header.php');
         </li>
         <li><a href="#services" class="nav-link scrollto"><i class="bi bi-7-square"></i> <span>Listar personas</span></a></li>
         <li><a href="#contact" class="nav-link scrollto"><i class="bi bi-8-square"></i><span>Cambiar dueño auto</span></a></li>
-        <li><a href="#contact" class="nav-link scrollto"><i class="bi bi-9-square"></i><span>Actualizar datos persona</span></a></li>
+        <li><a href="#actualizar" class="nav-link scrollto"><i class="bi bi-9-square"></i><span>Actualizar datos persona</span></a></li>
       </ul>
     </nav><!-- .nav-menu -->
 
@@ -83,7 +83,7 @@ include_once('../../templates/header.php');
 
       <h1>EJERCICIO 3</h1><BR></BR>
       <H3>CREAR UNA NUEVA PERSONA</H3>
-      <?php include "../../View/NuevaPersona.php"; ?>;
+      <?php include "View/NuevaPersona.php"; ?>;
 
     </section><!-- End About Section -->
 
@@ -92,54 +92,49 @@ include_once('../../templates/header.php');
       <h1>EJERCICIO 4</h1><BR></BR>
       <H3>CREAR UN NUEVO AUTO</H3>
       <?php
-      include "../../View/NuevoAuto.php";
+      include "View/NuevoAuto.php";
       ?>
     </section><!-- End Facts Section -->
 
     <!-- ======= Ver Lista de Autos ======= -->
-    <section id="skills" class="skills section-bg">
+    <section id="resume" class="resume section-bg">
       <h1>EJERCICIO 5</h1><BR></BR>
       <H3>Ver lista de autos</H3>
-      <?php include "../../View/VerAutos.php"; ?>;
+      <?php include "View/VerAutos.php"; ?>;
 
     </section><!-- End Skills Section -->
 
     <!-- ======= Buscar Autos ======= -->
-    <section id="resume" class="resume">
+    <section id="portfolio" class="portfolio">
 
       <h1>EJERCICIO 6</h1><BR></BR>
       <H3>Buscar Auto</H3>
-      <?php include "../../View/buscarAuto.php"; ?>
-      <?php include "../../View/autosPersona.php"; ?>
-
-
+      <?php include "View/buscarAuto.php"; ?>
+      
+      
     </section><!-- End Resume Section -->
-
+    
     <!-- ======= Listar Personas ======= -->
-    <section id="portfolio" class="portfolio section-bg">
+    <section id="services" class="services section-bg">
       <h1>EJERCICIO 7</h1><BR></BR>
       <H3>Listar Persona</H3>
-      <?php include "../../View/listaPersonas.php"; ?>
+      <?php include "View/listaPersonas.php"; ?>
+      <?php include "View/autosPersona.php"; ?>
     </section><!-- End Portfolio Section -->
 
     <!-- ======= Cambiar Dueño ======= -->
-    <section id="services" class="services">
+    <section id="contact" class="contact">
       <h1>EJERCICIO 8</h1><BR></BR>
       <H3>Cambiar Dueño</H3>
-      <?php include "../../View/CambioDuenio.php"; ?>
+      <?php include "View/CambioDuenio.php"; ?>
     </section><!-- End Services Section -->
 
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
+    <!-- ======= Actualizar datos persona ======= -->
+    <section id="actualizar" class="actualizar section-bg">
       <h1>EJERCICIO 9</h1><BR></BR>
       <H3>Actualizar datos persona</H3>
-      <?php include "../../View/BuscarPersona.php"; ?>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-
-    </section><!-- End Contact Section -->
+      <?php include "View/BuscarPersona.php"; ?>
+    </section><!-- End Actualizar datos persona -->
 
   </main><!-- End #main -->
 
@@ -174,3 +169,7 @@ include_once('../../templates/header.php');
 </body>
 
 </html>
+
+<?php
+include_once('templates/footer.php');
+?>

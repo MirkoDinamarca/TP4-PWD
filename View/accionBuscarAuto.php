@@ -4,10 +4,10 @@ include_once('../configuracion.php');
 
 $objAuto = new Auto();
 $datos = data_submitted();
-$resultado = $objAuto->buscar($datos);
-// echo '<pre>';
-// var_dump($resultado);
-// echo '</pre>';
+
+if ($datos['Patente'] != 'null') {
+    $resultado = $objAuto->buscar($datos);
+}
 
 ?>
 
@@ -33,7 +33,7 @@ $resultado = $objAuto->buscar($datos);
             </tbody>
         </table>
 
-        <a href="../vistanueva/MyResume/index.php" class="btn btn-primary">Volver</a>
+        <a href="../index.php" class="btn ">Volver</a>
 
     </div>
 </div>

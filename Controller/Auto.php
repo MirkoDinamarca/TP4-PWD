@@ -30,11 +30,11 @@ class Auto {
 
         $validacion = [];
 
-        $dniPersona = $datos['NroDni'];
+        $dniPersona = $datos['DniDuenio'];
 
         $objPersona->Buscar($dniPersona);
 
-        if ($objPersona->getNroDni() != '') { // ¿Esto está bien? Preguntar en clase
+    if (!empty($objPersona->getNroDni())) { // ¿Esto está bien? Preguntar en clase
 
             if (isset($datos)) {
                 
@@ -90,6 +90,3 @@ class Auto {
         return $validacion;
     }
 }
-
-
-?>

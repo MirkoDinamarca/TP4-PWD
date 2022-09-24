@@ -14,15 +14,15 @@ $datoPersona = $objPersona->buscar($datos);
 
     <div class="col-xs-12 col-md-8" style="padding: 20px; border-radius: 10px;">
         <h3 style="text-align: center;">¡Datos actualizados correctamente!</h3>
-        <table class="table table-dark">
+        <table class="table table-striped">
             <thead>
                 <tr style="border-bottom:2px solid white;">
-                    <th scope="col" style="border-radius: 5px 0 0 0; border-right: 2px solid white;">DNI</th>
-                    <th scope="col" style="border-right: 2px solid white;">Nombre</th>
-                    <th scope="col" style="border-right: 2px solid white;">Apellido</th>
-                    <th scope="col" style="border-radius: 0 5px 0 0; border-left: 2px solid white;">Fecha de Nacimiento</th>
-                    <th scope="col" style="border-radius: 0 5px 0 0; border-left: 2px solid white;">Teléfono</th>
-                    <th scope="col" style="border-radius: 0 5px 0 0; border-left: 2px solid white;">Domicilio</th>
+                    <th scope="col" style="border-radius: 5px 0 0 0">DNI</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col" style="border-radius: 0 5px 0 0;">Fecha de Nacimiento</th>
+                    <th scope="col" style="border-radius: 0 5px 0 0;">Teléfono</th>
+                    <th scope="col" style="border-radius: 0 5px 0 0;">Domicilio</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +45,7 @@ $datoPersona = $objPersona->buscar($datos);
                 <?php } ?>
             </tbody>
         </table>
-        <a href="../vistanueva/MyResume/index.php" class="btn btn-primary">Volver</a>
+        <a href="../index.php" class="btn ">Volver</a>
 
     </div>
 </div>

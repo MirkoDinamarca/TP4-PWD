@@ -14,8 +14,7 @@ $resultado = $objAuto->newAuto($datos);
     <div class="col-xs-12 col-md-8" style="padding: 20px; border: 1px solid gray; border-radius: 10px;">
         <?php if (!$resultado['persona']) { ?>
             <h1>La persona no se encuentra registrada</h1>
-            <h2>¿Desea registrar una persona?</h2>
-            <a class="btn btn-primary" href="NuevaPersona.php">Registrar Nueva Persona</a>
+            <a class="btn " href="../index.php">Volver al inicio</a>
         <?php } else { ?>
             <?php if ($resultado['insercion']) { ?>
                 <h1>¡El auto se registró con éxito!</h1>

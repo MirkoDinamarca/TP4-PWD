@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" id="NroDni" name="NroDni" placeholder="Ingrese el N°DNI">
             </div>
 
-            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button type="submit" class="btn ">Buscar</button>
         </form>
     </div>
 </div> -->
@@ -27,17 +27,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="form" action="../../View/accionBuscarPersonaAutos.php" method="GET">
+                <form id="form" class="needs-validation" novalidate action="View/accionBuscarPersonaAutos.php" method="GET">
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">DNI</label>
-                        <input type="text" class="form-control" id="NroDni" name="NroDni" placeholder="Ingrese el N°DNI">
+                        <input type="number" class="form-control" id="NroDni" name="NroDni" placeholder="Ingrese el N°DNI" required>
+                        <div class="invalid-feedback">
+                            Este campo es obligatorio
+                        </div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <!-- <button type="button" class="btn btn-primary">Buscar</button> -->
-                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <!-- <button type="button" class="btn ">Buscar</button> -->
+                        <button type="submit" class="btn ">Buscar</button>
                     </div>
                 </form>
             </div>

@@ -49,7 +49,7 @@ $listaPersonas = $objPersona->buscar();
     <div class="row">
         <div class="col-xs-12 col-md-5"></div>
         <div class="col-xs-12 col-md-2">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Buscar persona
             </button>
         </div>

@@ -7,29 +7,20 @@ $objPersona = new Persona();
 
 $datos = data_submitted();
 
-$datoPersona = $objPersona->buscar($datos);
+if ($datos['NroDni'] != null) {
+    $datoPersona = $objPersona->buscar($datos);
+}
 
-$dniPersona['NroDni'] = $datoPersona[0]->getNroDni();
-$datoAutosPersona = $objAuto->buscar($dniPersona);
-
-// $personaCompleta = $objPersona->buscar($datos);
-// /* echo '<pre>';
-// var_dump(($personaCompleta));
-// echo '</pre>'; */
-// $objAuto = new Auto();
-// $objPersona = new Persona();
-// $datos = data_submitted();
-
-// $datoPersona = $objPersona->buscar($datos);
-// $dniPersona['DniDuenio'] = $datoPersona[0]->getNroDni();
-
-// $datoAutosPersona = $objAuto->buscar($dniPersona);
+if (!empty($datoPersona)) {
+    $dniPersona['NroDni'] = $datoPersona[0]->getNroDni();
+    $datoAutosPersona = $objAuto->buscar($dniPersona);
+}
 
 ?>
 
 <div class="m-0 vh-100 row justify-content-center align-items-center">
 
-    <div class="col-xs-12 col-md-8" style="padding: 20px; border: 1px solid gray; border-radius: 10px;">
+    <div class="col-xs-12 col-md-8" style="padding: 20px; border-radius: 10px;">
         <table class="table table-dark">
             <thead>
                 <tr style="border-bottom:2px solid white;">
@@ -43,7 +34,7 @@ $datoAutosPersona = $objAuto->buscar($dniPersona);
             </thead>
             <tbody>
                 <?php
-                if (isset($datoPersona)) {
+                if (!empty($datoPersona)) {
                 ?>
                     <tr style="border-bottom:2px solid white;">
                         <th scope="row"><?= $datoPersona[0]->getNroDni() ?></th>
@@ -56,7 +47,7 @@ $datoAutosPersona = $objAuto->buscar($dniPersona);
                 <?php
                 } else { ?>
                     <tr>
-                        <td colspan="6" style="text-align: center;">No se encontraron autos registrados</td>
+                        <td colspan="6" style="text-align: center;">No se encontraron personas registradas</td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -73,7 +64,7 @@ $datoAutosPersona = $objAuto->buscar($dniPersona);
             </thead>
             <tbody>
                 <?php
-                if (isset($datoAutosPersona)) {
+                if (!empty($datoAutosPersona)) {
                     foreach ($datoAutosPersona as $data) : ?>
                         <tr style="border-bottom:2px solid white;">
                             <th scope="row"><?= $data->getPatente() ?></th>
@@ -90,7 +81,7 @@ $datoAutosPersona = $objAuto->buscar($dniPersona);
             </tbody>
         </table>
 
-        <a href="../vistanueva/MyResume/index.php" class="btn btn-primary">Volver</a>
+        <a href="../index.php" class="btn ">Volver</a>
 
     </div>
 
