@@ -4,7 +4,7 @@
         <form id="form" class="needs-validation" novalidate action="View/accionNuevaPersona.php" method="POST">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">N°DNI</label>
-                <input type="text" class="form-control" id="NroDni" name="NroDni" placeholder="Ingrese el N°DNI" required>
+                <input type="number" class="form-control" id="NroDni" name="NroDni" placeholder="Ingrese el N°DNI" required>
                 <div class="invalid-feedback">
                     Este campo es obligatorio
                 </div>

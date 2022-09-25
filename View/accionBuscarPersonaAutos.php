@@ -21,7 +21,7 @@ if (!empty($datoPersona)) {
 <div class="m-0 vh-100 row justify-content-center align-items-center">
 
     <div class="col-xs-12 col-md-8" style="padding: 20px; border-radius: 10px;">
-        <table class="table table-dark">
+        <table class="table">
             <thead>
                 <tr style="border-bottom:2px solid white;">
                     <th scope="col" style="border-radius: 5px 0 0 0; border-right: 2px solid white;">DNI</th>
@@ -54,7 +54,7 @@ if (!empty($datoPersona)) {
         </table>
         <h1>Los autos asociados a esa persona son:</h1>
 
-        <table class="table table-dark">
+        <table class="table">
             <thead>
                 <tr style="border-bottom:2px solid white;">
                     <th scope="col" style="border-radius: 5px 0 0 0; border-right: 2px solid white;">Patente</th>

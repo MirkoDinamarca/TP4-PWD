@@ -1,7 +1,3 @@
-<?php
-// include_once('../templates/header.php');
-// include_once('../configuracion.php');
-?>
 
 <div class="m-0 row justify-content-center align-items-center">
 
@@ -25,7 +21,3 @@
         </form>
     </div>
 </div>
-
-<?php
-// include_once('../templates/footer.php');
-?>
