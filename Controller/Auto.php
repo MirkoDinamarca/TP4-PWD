@@ -61,37 +61,32 @@ class Auto
 
     public function cambiarDuenio($datos)
     {
-
+        $objAuto = new Model_auto();
+        $objPersona = new Model_persona();
         // Creamos una nueva instancia de Validator
-        $validator = new Validator;
+        $validator = new Validator();
 
         // Seteamos mensajes que se van a mostrar en caso de haber campos que no corresponden
         $validator->setMessages([
-            'required' => ':attribute es requerido',
-            'numeric' => ':attribute tiene que ser numerico',
+            'required' => 'El campo :attribute es requerido',
+            'numeric' => 'El campo :attribute tiene que ser numerico',
         ]);
 
         // Acá seteando los campos y de que tipo van a ser, si requeridos o numéricos, etc.
         $validation = $validator->make($datos, [
-            'Patente'                  => 'required',
-            'NroDni'                 => 'required|numeric|mail',
+            'Patente' => 'required',
+            'NroDni' => 'required|numeric',
         ]);
 
         // Valida todo acá
         $validation->validate();
 
+        $validacion = [];
+
         if ($validation->fails()) { // En caso de fallar, entonces..
             $errors = $validation->errors(); // En esta variable ' $errors ' es donde se almacenan todos los errores que se van a dibujar por pantalla
-            echo "<pre>";
-            print_r($errors->firstOfAll());
-            echo "</pre>";
-            exit;
+            $validacion['errores'] = $errors->firstOfAll();
         } else { // De no fallar, sale todo correcto..
-
-            $objAuto = new Model_auto();
-            $objPersona = new Model_persona();
-
-            $validacion = [];
 
             $dniPersona = $datos['NroDni'];
             $patente = $datos['Patente'];
@@ -118,7 +113,7 @@ class Auto
             } else {
                 $validacion['persona'] = false;
             }
-            return $validacion;
         }
+        return $validacion;
     }
 }
