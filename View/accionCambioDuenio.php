@@ -4,7 +4,13 @@ include_once('../templates/header.php');
 include_once('../configuracion.php');
 
 $objAuto = new Auto();
-$datos = data_submitted();
+$datos = $_POST;
+
+echo '<pre>';
+var_dump($datos);
+echo '</pre>';
+
+echo "Hasta acá llega el primer var_dump";
 
 
 $resultado = $objAuto->cambiarDuenio($datos);

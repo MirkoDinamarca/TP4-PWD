@@ -142,7 +142,11 @@ class Model_auto {
         if ($bd->Iniciar()) {
             if ($bd->Ejecutar($query)) {
                 if ($row = $bd->Registro()) {
-                    $this->setearValores($row['Patente'], $row['Marca'], $row['Modelo'], $row['DniDuenio']);
+
+                    $objDuenio = new Persona();
+                    $objDuenio->buscar($row['DniDuenio']);
+
+                    $this->setearValores($row['Patente'], $row['Marca'], $row['Modelo'], $objDuenio);
                     $rta = true;
                 }
             } else {
