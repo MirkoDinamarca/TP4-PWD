@@ -10,22 +10,42 @@ class Auto
      * @param param array(1) { ["Patente"]=> string(6) "ABC123" }
      * @return An array de objetos.
      */
-    public function buscar($param = NULL)
+    public function buscar($param)
     {
         $objAuto = new Model_auto();
-        $where = " true ";
-        if ($param != NULL) {
-            if (isset($param['Patente'])) {
-                $where .= " AND Patente ='" . $param['Patente'] . "'";
+        $validator = new Validator();
+
+        $validator->setMessages([
+            'required' => 'El campo :attribute es requerido',
+        ]);
+
+        $validation = $validator->make($param, [
+            'Patente' => 'required',
+        ]);
+
+        // Validando datos
+        $validation->validate();
+
+        if ($validation->fails()) {
+            $errors = $validation->errors();
+            $data['errores'] = $errors->firstOfAll();
+        } else {
+
+            $where = " true ";
+            if ($param != NULL) {
+                if (isset($param['Patente'])) {
+                    $where .= " AND Patente ='" . $param['Patente'] . "'";
+                }
+
+                if (isset($param['NroDni'])) {
+                    $where .= " AND DniDuenio ='" . $param['NroDni'] . "'";
+                }
             }
 
-            if (isset($param['NroDni'])) {
-                $where .= " AND DniDuenio ='" . $param['NroDni'] . "'";
-            }
+            $data = $objAuto->listar($where);
         }
 
-        $autos = $objAuto->listar($where);
-        return $autos;
+        return $data;
     }
 
     public function newAuto($datos)
@@ -33,30 +53,51 @@ class Auto
         $objAuto = new Model_auto();
         $objPersona = new Model_persona();
 
-        $validacion = [];
+        $validator = new Validator();
 
-        $dniPersona = $datos['DniDuenio'];
+        $validator->setMessages([
+            'required' => 'El campo :attribute es requerido',
+            'numeric' => 'El campo :attribute debe ser numérico',
+        ]);
 
-        $objPersona->Buscar($dniPersona);
+        $validation = $validator->make($datos, [
+            'Patente' => 'required',
+            'Marca' => 'required',
+            'Modelo' => 'required|numeric',
+            'DniDuenio' => 'required',
+        ]);
 
-        if (!empty($objPersona->getNroDni())) { // ¿Esto está bien? Preguntar en clase
+        // Validando datos
+        $validation->validate();
 
-            if (isset($datos)) {
-
-                $objAuto->setearValores($datos['Patente'], $datos['Marca'], $datos['Modelo'], $objPersona);
-
-                if ($objAuto->Insertar()) {
-                    $validacion['insercion'] = true;
-                } else {
-                    $validacion['insercion'] = false;
-                }
-            }
-            $validacion['persona'] = true;
+        if ($validation->fails()) {
+            $errors = $validation->errors();
+            $data['errores'] = $errors->firstOfAll();
         } else {
-            $validacion['persona'] = false;
+
+            $dniPersona = $datos['DniDuenio'];
+
+            $objPersona->Buscar($dniPersona);
+
+            if (!empty($objPersona->getNroDni())) { // ¿Esto está bien? Preguntar en clase
+
+                if (isset($datos)) {
+
+                    $objAuto->setearValores($datos['Patente'], $datos['Marca'], $datos['Modelo'], $objPersona);
+
+                    if ($objAuto->Insertar()) {
+                        $data['insercion'] = true;
+                    } else {
+                        $data['insercion'] = false;
+                    }
+                }
+                $data['persona'] = true;
+            } else {
+                $data['persona'] = false;
+            }
         }
 
-        return $validacion;
+        return $data;
     }
 
     public function cambiarDuenio($datos)

@@ -8,20 +8,21 @@ $datos = $_POST;
 
 $resultado = $objAuto->cambiarDuenio($datos);
 
+if (isset($resultado['errores'])) {
+
+    if (count($resultado['errores']) > 0) { 
+
+        $error = serialize($resultado['errores']);
+        $error = urlencode($error);
+        header("Location: CambioDuenio.php?mensaje=" . $error);
+    }
+} 
+
 ?>
 
 <div class="m-0 vh-100 row justify-content-center align-items-center">
 
     <div class="col-xs-12 col-md-8" style="padding: 20px; border-radius: 10px;">
-        <?php 
-        if (isset($resultado['errores'])) {
-            if (count($resultado['errores']) > 0) { 
-
-                $error = serialize($resultado['errores']);
-                $error = urlencode($error);
-                header("Location: CambioDuenio.php?mensaje=" . $error);
-            }
-        } ?>
 
         <?php if (!$resultado['patente']) { ?>
             <h1>La patente no se encuentra registrada</h1>
@@ -37,8 +38,9 @@ $resultado = $objAuto->cambiarDuenio($datos);
         <a href="../index.php" class="btn ">Volver al Inicio</a>
 
     </div>
+
 </div>
 
-<script>
-
-</script>
+<?php 
+include_once('../templates/footer.php');
+?>

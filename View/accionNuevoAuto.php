@@ -3,9 +3,19 @@ include_once('../templates/header.php');
 include_once('../configuracion.php');
 
 $objAuto = new Auto();
-$datos = data_submitted();
+// $datos = data_submitted();
 
-$resultado = $objAuto->newAuto($datos);
+$resultado = $objAuto->newAuto($_POST);
+
+if (isset($resultado['errores'])) {
+
+    if (count($resultado['errores']) > 0) { 
+
+        $error = serialize($resultado['errores']);
+        $error = urlencode($error);
+        header("Location: NuevoAuto.php?mensaje=" . $error);
+    }
+} 
 
 ?>
 

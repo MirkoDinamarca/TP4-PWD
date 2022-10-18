@@ -6,10 +6,6 @@ if (isset($_GET['mensaje'])) {
     $error = unserialize($_GET['mensaje']);
 }
 
-/* echo '<pre>';
-var_dump($error);
-echo '</pre>'; */
-
 ?>
 
 <main id="main">
@@ -34,13 +30,18 @@ echo '</pre>'; */
     </div>
 </main>
 
+<?php 
+include_once('../templates/footer.php');
+?>
+
 <script>
     
     Swal.fire({
         icon: 'error',
-        title: 'Oops...',
+        title: '¡Ha ocurrido un error!',
         text: '<?php foreach ($error as $e) { ?>
-            <?= $e . ". " ?>
-        <?php } ?>',
+            <?= $e . "." ?>
+        <?php } ?>'
     });
+
 </script>

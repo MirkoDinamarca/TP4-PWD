@@ -55,7 +55,7 @@
         <li><a href="#facts" class="nav-link scrollto"><i class="bi bi-4-square"></i><span>Crear Auto</span></a>
         </li>
         <li><a href="#resume" class="nav-link scrollto"><i class="bi bi-5-square"></i> <span>Ver lista autos</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto"><i class="bi bi-6-square"></i> <span>Buscar autos</span></a>
+        <li><a href="view/buscarAuto.php" class="nav-link scrollto"><i class="bi bi-6-square"></i> <span>Buscar autos</span></a>
         </li>
         <li><a href="#services" class="nav-link scrollto"><i class="bi bi-7-square"></i> <span>Listar personas</span></a></li>
         <li><a href="view/CambioDuenio.php" class="nav-link scrollto"><i class="bi bi-8-square"></i><span>Cambiar dueño auto</span></a></li>
@@ -89,28 +89,6 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-<script>
-  // Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
-  (function() {
-    'use strict'
-
-    // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
-    var forms = document.querySelectorAll('.needs-validation')
-
-    // Bucle sobre ellos y evitar el envío
-    Array.prototype.slice.call(forms)
-      .forEach(function(form) {
-        form.addEventListener('submit', function(event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
-</script>
 
 <!-- Vendor JS Files -->
 <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

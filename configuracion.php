@@ -14,8 +14,6 @@ include_once($ROOT.'includes/funciones.php');
 
 // Lo agregamos
 require('vendor/autoload.php');
-use Rakit\Validation\Validator;
-
 
 // Variable que define la pagina de autenticacion del proyecto
 $INICIO = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/vista/login/login.php";
