@@ -3,11 +3,18 @@ include_once('../templates/header.php');
 include_once('../configuracion.php');
 
 $objAuto = new Auto();
-$datos = data_submitted();
 
-if (!empty($datos['Patente'])) {
-    $resultado = $objAuto->buscar($datos);
-}
+$resultado = $objAuto->buscar($_GET);
+
+if (isset($resultado['errores'])) {
+
+    if (count($resultado['errores']) > 0) { 
+
+        $error = serialize($resultado['errores']);
+        $error = urlencode($error);
+        header("Location: buscarAuto.php?mensaje=" . $error);
+    }
+} 
 
 ?>
 
@@ -24,7 +31,7 @@ if (!empty($datos['Patente'])) {
                 </tr>
             </thead>
             <tbody>
-                <?php if ($resultado) {?>
+                <?php if (isset($resultado)) {?>
                     <tr>
                     <th scope="row"><?= $resultado[0]->getPatente() ?></th>
                     <td><?= $resultado[0]->getMarca() ?></td>
