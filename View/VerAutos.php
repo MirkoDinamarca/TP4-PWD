@@ -1,6 +1,6 @@
 <?php
-// include_once('../templates/header.php');
-// include_once('../configuracion.php');
+include_once('../templates/header.php');
+include_once('../configuracion.php');
 
 $objAuto = new Auto();
 $objPersona = new Persona();
@@ -8,7 +8,7 @@ $listaAutos = $objAuto->buscar();
 
 ?>
 
-<div class="m-0 row justify-content-center align-items-center">
+<div class="m-0 vh-100 row justify-content-center align-items-center">
 
     <div class="col-xs-12 col-md-8">
         <table class="table table-striped">
@@ -50,5 +50,5 @@ $listaAutos = $objAuto->buscar();
 </div>
 
 <?php
-// include_once('../templates/footer.php');
+include_once('../templates/footer.php');
 ?>

@@ -54,12 +54,12 @@
         </li>
         <li><a href="../View/NuevoAuto.php" class="nav-link scrollto"><i class="bi bi-4-square"></i><span>Crear Auto</span></a>
         </li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bi bi-5-square"></i> <span>Ver lista autos</span></a></li>
+        <li><a href="../View/VerAutos.php" class="nav-link scrollto"><i class="bi bi-5-square"></i> <span>Ver lista autos</span></a></li>
         <li><a href="../View/buscarAuto.php" class="nav-link scrollto"><i class="bi bi-6-square"></i> <span>Buscar autos</span></a>
         </li>
-        <li><a href="#services" class="nav-link scrollto"><i class="bi bi-7-square"></i> <span>Listar personas</span></a></li>
+        <li><a href="../View/listaPersonas.php" class="nav-link scrollto"><i class="bi bi-7-square"></i> <span>Listar personas</span></a></li>
         <li><a href="../view/CambioDuenio.php" class="nav-link scrollto"><i class="bi bi-8-square"></i><span>Cambiar dueño auto</span></a></li>
-        <li><a href="../View/actionBuscarPersona.php" class="nav-link scrollto"><i class="bi bi-9-square"></i><span>Actualizar datos persona</span></a></li>
+        <li><a href="../View/buscarPersona.php" class="nav-link scrollto"><i class="bi bi-9-square"></i><span>Actualizar datos persona</span></a></li>
       </ul>
     </nav><!-- .nav-menu -->
 

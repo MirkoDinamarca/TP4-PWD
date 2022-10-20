@@ -50,16 +50,16 @@
       <ul>
         <li><a href="#hero" class="nav-link scrollto"><i class="bi bi-house-heart"></i> <span>Inicio</span></a>
         </li>
-        <li><a href="#about" class="nav-link scrollto"><i class="bi bi-3-square"></i> <span>Crear Persona</span></a>
+        <li><a href="view/NuevaPersona.php" class="nav-link scrollto"><i class="bi bi-3-square"></i> <span>Crear Persona</span></a>
         </li>
-        <li><a href="#facts" class="nav-link scrollto"><i class="bi bi-4-square"></i><span>Crear Auto</span></a>
+        <li><a href="view/NuevoAuto.php" class="nav-link scrollto"><i class="bi bi-4-square"></i><span>Crear Auto</span></a>
         </li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bi bi-5-square"></i> <span>Ver lista autos</span></a></li>
+        <li><a href="view/VerAutos.php" class="nav-link scrollto"><i class="bi bi-5-square"></i> <span>Ver lista autos</span></a></li>
         <li><a href="view/buscarAuto.php" class="nav-link scrollto"><i class="bi bi-6-square"></i> <span>Buscar autos</span></a>
         </li>
-        <li><a href="#services" class="nav-link scrollto"><i class="bi bi-7-square"></i> <span>Listar personas</span></a></li>
+        <li><a href="view/listaPersonas.php" class="nav-link scrollto"><i class="bi bi-7-square"></i> <span>Listar personas</span></a></li>
         <li><a href="view/CambioDuenio.php" class="nav-link scrollto"><i class="bi bi-8-square"></i><span>Cambiar dueño auto</span></a></li>
-        <li><a href="#actualizar" class="nav-link scrollto"><i class="bi bi-9-square"></i><span>Actualizar datos persona</span></a></li>
+        <li><a href="view/buscarPersona.php" class="nav-link scrollto"><i class="bi bi-9-square"></i><span>Actualizar datos persona</span></a></li>
       </ul>
     </nav><!-- .nav-menu -->
 

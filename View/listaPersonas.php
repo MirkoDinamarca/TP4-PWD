@@ -1,13 +1,13 @@
 <?php
-// include_once('../templates/header.php');
-// include_once('../configuracion.php');
+include_once('../templates/header.php');
+include_once('../configuracion.php');
 
 $objPersona = new Persona();
 $listaPersonas = $objPersona->buscar();
 
 ?>
 
-<div class="m-0 row justify-content-center align-items-center">
+<div class="m-0 row vh-100 justify-content-center align-items-center">
 
     <div class="col-xs-12 col-md-10">
         <table class="table table-striped">
@@ -43,20 +43,35 @@ $listaPersonas = $objPersona->buscar();
                 <?php } ?>
             </tbody>
         </table>
-    </div>
 
-    <!-- Button trigger modal -->
-    <div class="row">
-        <div class="col-xs-12 col-md-5"></div>
-        <div class="col-xs-12 col-md-2">
-            <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Buscar persona
-            </button>
+        <div class="row">
+            <div class="col-xs-12 col-md-5"></div>
+            <div class="col-xs-12 col-md-2">
+                <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Buscar persona
+                </button>
+            </div>
+            <div class="col-xs-12 col-md-5"></div>
         </div>
-        <div class="col-xs-12 col-md-5"></div>
     </div>
-</div>
 
-<?php
-// include_once('../templates/footer.php');
-?>
+    < </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Buscar Persona y su Auto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <?php include('autosPersona.php'); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        include_once('../templates/footer.php');
+        ?>

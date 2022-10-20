@@ -143,7 +143,7 @@ class Model_auto {
             if ($bd->Ejecutar($query)) {
                 if ($row = $bd->Registro()) {
 
-                    $objDuenio = new Persona();
+                    $objDuenio = new Model_persona();
                     $objDuenio->buscar($row['DniDuenio']);
 
                     $this->setearValores($row['Patente'], $row['Marca'], $row['Modelo'], $objDuenio);

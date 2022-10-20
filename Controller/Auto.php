@@ -10,29 +10,31 @@ class Auto
      * @param param array(1) { ["Patente"]=> string(6) "ABC123" }
      * @return An array de objetos.
      */
-    public function buscar($param)
+    public function buscar($param = NULL)
     {
         $objAuto = new Model_auto();
         $validator = new Validator();
+        $data = [];
 
-        $validator->setMessages([
-            'required' => 'El campo :attribute es requerido',
-        ]);
+        if ($param != NULL) {
+            if (empty($param['Patente'])) {
+                $validator->setMessages([
+                    'required' => 'El campo :attribute es requerido',
+                ]);
 
-        $validation = $validator->make($param, [
-            'Patente' => 'required',
-        ]);
+                $validation = $validator->make($param, [
+                    'Patente' => 'required',
+                ]);
 
-        // Validando datos
-        $validation->validate();
+                // Validando datos
+                $validation->validate();
 
-        if ($validation->fails()) {
-            $errors = $validation->errors();
-            $data['errores'] = $errors->firstOfAll();
-        } else {
-
-            $where = " true ";
-            if ($param != NULL) {
+                if ($validation->fails()) {
+                    $errors = $validation->errors();
+                    $data['errores'] = $errors->firstOfAll();
+                }
+            } else {
+                $where = " true ";
                 if (isset($param['Patente'])) {
                     $where .= " AND Patente ='" . $param['Patente'] . "'";
                 }
@@ -40,11 +42,21 @@ class Auto
                 if (isset($param['NroDni'])) {
                     $where .= " AND DniDuenio ='" . $param['NroDni'] . "'";
                 }
+
+                $data = $objAuto->listar($where);
+            }
+        } else {
+            $where = " true ";
+            if (isset($param['Patente'])) {
+                $where .= " AND Patente ='" . $param['Patente'] . "'";
+            }
+
+            if (isset($param['NroDni'])) {
+                $where .= " AND DniDuenio ='" . $param['NroDni'] . "'";
             }
 
             $data = $objAuto->listar($where);
         }
-
         return $data;
     }
 
@@ -74,16 +86,18 @@ class Auto
             $errors = $validation->errors();
             $data['errores'] = $errors->firstOfAll();
         } else {
-
             $dniPersona = $datos['DniDuenio'];
-
+            
             $objPersona->Buscar($dniPersona);
-
+            
             if (!empty($objPersona->getNroDni())) { // ¿Esto está bien? Preguntar en clase
-
+                
                 if (isset($datos)) {
-
+                    
                     $objAuto->setearValores($datos['Patente'], $datos['Marca'], $datos['Modelo'], $objPersona);
+                    echo '<pre>';
+                    var_dump($objAuto);
+                    echo '</pre>';
 
                     if ($objAuto->Insertar()) {
                         $data['insercion'] = true;
@@ -104,6 +118,7 @@ class Auto
     {
         $objAuto = new Model_auto();
         $objPersona = new Model_persona();
+
         // Creamos una nueva instancia de Validator
         $validator = new Validator();
 
@@ -127,18 +142,16 @@ class Auto
         if ($validation->fails()) { // En caso de fallar, entonces..
             $errors = $validation->errors(); // En esta variable ' $errors ' es donde se almacenan todos los errores que se van a dibujar por pantalla
             $validacion['errores'] = $errors->firstOfAll();
-        } else { // De no fallar, sale todo correcto..
-
+        } else { // De no fallar, todo está correcto..
             $dniPersona = $datos['NroDni'];
             $patente = $datos['Patente'];
-
             $objPersona->Buscar($dniPersona);
 
             $objAuto->Buscar($patente);
 
-            if ($objPersona->getNroDni() != '') { // ¿Esto está bien? Preguntar en clase
+            if ($objPersona->getNroDni() != '') {
 
-                if ($objAuto->getPatente() != '') { // ¿Esto está bien x2? Preguntar en clase
+                if ($objAuto->getPatente() != '') { 
                     $validacion['patente'] = true;
                     $objAuto->setearValores($objAuto->getPatente(), $objAuto->getMarca(), $objAuto->getModelo(), $objPersona);
 

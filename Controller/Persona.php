@@ -13,15 +13,44 @@ class Persona
     public function buscar($param = NULL)
     {
         $objPersona = new Model_persona();
-        $where = " true ";
+        $validator = new Validator();
+        $data = [];
+
         if ($param != NULL) {
+
+            if (empty($param['NroDni'])) {
+                $validator->setMessages([
+                    'required' => 'El campo :attribute es requerido',
+                ]);
+
+                $validation = $validator->make($param, [
+                    'NroDni' => 'required',
+                ]);
+
+                // Validando datos
+                $validation->validate();
+
+                if ($validation->fails()) {
+                    $errors = $validation->errors();
+                    $data['errores'] = $errors->firstOfAll();
+                }
+            } else {
+                $where = " true ";
+                if (isset($param['NroDni'])) {
+                    $where .= " AND NroDni = " . $param['NroDni'];
+                }
+
+                $data = $objPersona->listar($where);
+            }
+        } else {
+            $where = " true ";
             if (isset($param['NroDni'])) {
                 $where .= " AND NroDni = " . $param['NroDni'];
             }
-        }
 
-        $personas = $objPersona->listar($where);
-        return $personas;
+            $data = $objPersona->listar($where);
+        }
+        return $data;
     }
 
     public function newPersona($datos)

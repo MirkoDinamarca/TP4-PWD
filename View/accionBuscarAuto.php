@@ -46,7 +46,7 @@ if (isset($resultado['errores'])) {
             </tbody>
         </table>
 
-        <a href="../index.php" class="btn ">Volver</a>
+        <a href="buscarAuto.php" class="btn ">Volver</a>
 
     </div>
 </div>
