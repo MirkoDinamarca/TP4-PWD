@@ -62,8 +62,10 @@ class Auto
 
     public function newAuto($datos)
     {
+
         $objAuto = new Model_auto();
         $objPersona = new Model_persona();
+        $data = [];
 
         $validator = new Validator();
 
@@ -76,7 +78,7 @@ class Auto
             'Patente' => 'required',
             'Marca' => 'required',
             'Modelo' => 'required|numeric',
-            'DniDuenio' => 'required',
+            'DniDuenio' => 'required|numeric',
         ]);
 
         // Validando datos
@@ -87,25 +89,23 @@ class Auto
             $data['errores'] = $errors->firstOfAll();
         } else {
             $dniPersona = $datos['DniDuenio'];
-            
+
             $objPersona->Buscar($dniPersona);
-            
+
             if (!empty($objPersona->getNroDni())) { // ¿Esto está bien? Preguntar en clase
-                
-                if (isset($datos)) {
-                    
+
+                if (!$objAuto->Buscar($datos['Patente'])) {
+
                     $objAuto->setearValores($datos['Patente'], $datos['Marca'], $datos['Modelo'], $objPersona);
-                    echo '<pre>';
-                    var_dump($objAuto);
-                    echo '</pre>';
 
                     if ($objAuto->Insertar()) {
                         $data['insercion'] = true;
                     } else {
                         $data['insercion'] = false;
                     }
+
+                    $data['persona'] = true;
                 }
-                $data['persona'] = true;
             } else {
                 $data['persona'] = false;
             }
@@ -151,7 +151,7 @@ class Auto
 
             if ($objPersona->getNroDni() != '') {
 
-                if ($objAuto->getPatente() != '') { 
+                if ($objAuto->getPatente() != '') {
                     $validacion['patente'] = true;
                     $objAuto->setearValores($objAuto->getPatente(), $objAuto->getMarca(), $objAuto->getModelo(), $objPersona);
 

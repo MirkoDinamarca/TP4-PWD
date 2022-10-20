@@ -81,10 +81,15 @@ class Persona
             $data['errores'] = $errors->firstOfAll();
         } else {
             $data['validacion'] = false;
-            $objPersona->setearValores($datos['NroDni'], $datos['Apellido'], $datos['Nombre'], $datos['fechaNac'], $datos['Telefono'], $datos['Domicilio']);
 
-            if ($objPersona->Insertar()) {
-                $data['validacion'] = true;
+            if (!$objPersona->Buscar($datos['NroDni'])) {
+                $objPersona->setearValores($datos['NroDni'], $datos['Apellido'], $datos['Nombre'], $datos['fechaNac'], $datos['Telefono'], $datos['Domicilio']);
+    
+                if ($objPersona->Insertar()) {
+                    $data['validacion'] = true;
+                }
+            } else {
+                $data['validacion'] = false;
             }
         }
 
