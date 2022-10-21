@@ -37,7 +37,7 @@ if (isset($_GET['mensaje'])) {
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="fechaNac" name="fechaNac" placeholder="Ingrese la fecha de nacimiento">
+                <input type="date" class="form-control" id="fechaNac" name="fechaNac" max="2001-01-31" placeholder="Ingrese la fecha de nacimiento">
                 <!-- <div class="invalid-feedback">
                     Este campo es obligatorio
                 </div> -->
@@ -70,8 +70,8 @@ include_once('../templates/footer.php');
     Swal.fire({
         icon: 'error',
         title: '¡Ha ocurrido un error!',
-        text: '<?php foreach ($error as $e) { ?>
-            <?= $e . ". " ?>
+        html: '<?php foreach ($error as $e) { ?>
+            <?= "<pre>" . $e . "</pre>" ?>
         <?php } ?>',
     });
 

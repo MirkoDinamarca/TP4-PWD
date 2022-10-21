@@ -31,7 +31,7 @@ if (isset($resultado['errores'])) {
                 </tr>
             </thead>
             <tbody>
-                <?php if (isset($resultado)) {?>
+                <?php if (isset($resultado) && !empty($resultado)) { ?>
                     <tr>
                     <th scope="row"><?= $resultado[0]->getPatente() ?></th>
                     <td><?= $resultado[0]->getMarca() ?></td>

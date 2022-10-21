@@ -62,13 +62,14 @@ class Persona
         $validator->setMessages([
             'required' => 'El campo :attribute es requerido',
             'numeric' => 'El campo :attribute debe ser numérico',
+            'date' => 'El campo :attribute debe ser asdasdsd',
         ]);
 
         $validation = $validator->make($datos, [
             'NroDni' => 'required',
             'Nombre' => 'required',
             'Apellido' => 'required',
-            'fechaNac' => 'required',
+            'fechaNac' => 'date:format',
             'Telefono' => 'required|numeric',
             'Domicilio' => 'required',
         ]);
