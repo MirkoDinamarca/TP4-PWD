@@ -39,8 +39,8 @@ include_once('../templates/footer.php');
     Swal.fire({
         icon: 'error',
         title: '¡Ha ocurrido un error!',
-        text: '<?php foreach ($error as $e) { ?>
-            <?= $e . "." ?>
+        html: '<?php foreach ($error as $e) { ?>
+            <?= "<pre>" . $e . "</pre>" ?>
         <?php } ?>'
     });
 

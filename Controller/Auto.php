@@ -141,7 +141,7 @@ class Auto
 
         if ($validation->fails()) { // En caso de fallar, entonces..
             $errors = $validation->errors(); // En esta variable ' $errors ' es donde se almacenan todos los errores que se van a dibujar por pantalla
-            $validacion['errores'] = $errors->firstOfAll();
+            $validacion['errores'] = $errors->firstOfAll(); // --> Esta función almacena los errores en un arreglo
         } else { // De no fallar, todo está correcto..
             $dniPersona = $datos['NroDni'];
             $patente = $datos['Patente'];
